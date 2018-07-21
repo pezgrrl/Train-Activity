@@ -10,8 +10,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-function getValues(event){
-	event.preventDefault();
+
 
   var trainName = $("#train").val().trim();
   var destination = $("#destination").val().trim();
@@ -52,9 +51,9 @@ database.ref().on("child_added",function(snapshot){
   var firstTrainPretty = moment(trainArrival, "hh:mm").subtract(1, "years");
   var currentTime = moment();
   var diffTime = moment().diff(moment(firstTrainPretty), "minutes");
-  var tRemainder = diffTime % trainFreq;
-  var tMinutesTillTrain = trainFreq - tRemainder;
-  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+  var remainder = diffTime % trainFreq;
+  var minutesTillTrain = trainFreq - remainder;
+  var nextTrain = moment().add(minutesTillTrain, "minutes");
   
 
 
