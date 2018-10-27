@@ -11,7 +11,9 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-
+//button id jquery
+$("#add-employee-btn").on("click", function(){
+  console.log("click");
   var trainName = $("#train").val().trim();
   var destination = $("#destination").val().trim();
   var startTrain = $("#arrival").val().trim();
@@ -35,7 +37,7 @@ var database = firebase.database();
   $("#destination").val("");
   $("#frequency").val("");
   $("#arrival").val("");
-};
+});
 
 database.ref().on("child_added",function(snapshot){
   
@@ -63,7 +65,7 @@ database.ref().on("child_added",function(snapshot){
     $("<td>").text(trainRoute),
     $("<td>").text(trainFreq),
     $("<td>").text(trainArrival),
-    $("<td>").text(tMinutesTillTrain),
+    $("<td>").text(minutesTillTrain),
     
 
   );
